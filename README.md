@@ -13,4 +13,4 @@ The goal of this project is to build docker containers that provides an Airflow 
 # Dag Generator from Templating
 
 1. We will add in 2 inputs that will take the jinja file and replace the owners name and dag name and generate a new dag in Airflow.  This should be used for typical DAGs that users will need but are will be reused constantly.  
-![alt text](images/template_inputs.jpg)
+![alt text]("images/template_inputs.PNG")
