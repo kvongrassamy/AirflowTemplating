@@ -17,3 +17,6 @@ The goal of this project is to build docker containers that provides an Airflow 
 
 2. Once you click Save it may take a couple minutes but a new Dag should be added in Airflow:
 ![image.png](images/template_newdag.PNG)
+
+# Bug Issues
+- There are a few issues on trying to delete the newly added dags individually.  You can delete the dags by checking the box in the templates tab and you can click on the Garbage can to delete it.
