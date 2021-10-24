@@ -14,3 +14,6 @@ The goal of this project is to build docker containers that provides an Airflow 
 
 1. We will add in 2 inputs that will take the jinja file and replace the owners name and dag name and generate a new dag in Airflow.  This should be used for typical DAGs that users will need but are will be reused constantly.  
 ![image.png](images/template_inputs.PNG)
+
+2. Once you click Save it may take a couple minutes but a new Dag should be added in Airflow:
+![image.png](images/template_newdag.PNG)
