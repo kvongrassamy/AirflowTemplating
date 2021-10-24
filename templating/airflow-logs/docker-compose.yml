@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+    postgres:
+        #image: postgres
+        build: ./postgres_docker/.
+        restart: always
+        # networks:
+        #     - airflow
+        environment:
+            POSTGRES_USER: airflow
+            POSTGRES_PASSWORD: airflow
+            POSTGRES_DB: airflow
+        ports:
+            - 5432:5432
+    pgadmin:
+        image: dpage/pgadmin4
+        ports:
+            - 5050:80
+        # networks:
+        #     - airflow
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=airflow@airflow.com
+            - PGADMIN_DEFAULT_PASSWORD=airflow
+        volumes:
+            - /postgres_docker/servers.json:/pgadmin4/servers.json
+
+    airflow:
+        build: .
+        restart: always
+        entrypoint:  []
+        ports:
+            - "8080:8080"
+        # depends_on:
+        #     - postgres
+        #     - pgadmin
+        volumes:
+            - /plugins:/root/airflow/plugins
+            - /dags:/root/airflow/dags
+

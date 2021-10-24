@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+    postgres:
+        image: postgres
+        environment:
+            - POSTGRES_USER=airflow
+            - POSTGRES_PASSWORD=airflow
+            - POSTGRES_DB=airflow
+            - POSTGRESQL_DATABASE=airflow
+        ports:
+            - 5432:5432
+    pgadmin:
+        image: dpage/pgadmin4
+        ports:
+            - 5050:80
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=airflow@airflow.com
+            - PGADMIN_DEFAULT_PASSWORD=airflow
+        volumes:
+            - /postgres_docker/servers.json:/pgadmin4/servers.json
+
+    airflow: 
+        build: .
+        restart: always
+        entrypoint:  []
+        environment: 
+          AIRFLOW__CORE__EXECUTOR: LocalExecutor
+          AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+          AIRFLOW__CORE__FERNET_KEY: ''
+          AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+          AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+          AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
+        ports:
+            - "8080:8080"
+        depends_on: 
+            - postgres
+        volumes:
+            - /dags:/opt/airflow/dags
+            - /logs:/opt/airflow/logs
+            - /plugins:/opt/airflow/plugins
+          
+            
