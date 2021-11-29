@@ -86,7 +86,6 @@ class DAGWriter:
             dag_path = cls.get_dag_full_path(template_id, dag_id)
 
             if dag_path.exists():
-                dag_path.unlink()
 
                 os.remove(dag_path)
 

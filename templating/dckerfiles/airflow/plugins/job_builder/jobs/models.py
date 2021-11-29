@@ -34,17 +34,6 @@ class JobMixin(LoggingMixin):
         # job.name = json.loads(job.name)
         # job.dag_name = json.load(job.dag_name)
         return {'name': self.name, 'dag_name': self.dag_name}
-
-
-    # def write_dag(self):
-    #     DAGWriter.write_dag(self.template_instance_id, self.dag_template_static_file, self.dag_id, self.template_data)
-        
-    # def update_dag(self):
-    #     DAGWriter.update_dag(self.template_instance_id, self.dag_id)
-    
-    # def update_dag(self):
-    #     DAGWriter.update_dag(self.template_instance_id, self.dag_template_static_file, self.dag_id, self.template_data)
-
     
 
 class testdag(JobMixin, Model):

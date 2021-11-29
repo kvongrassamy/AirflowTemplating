@@ -7,9 +7,6 @@ from airflow.plugins.job_builder.jobs.models import testdag
 from airflow.plugins.job_builder.jobs.dag_writer import DAGWriter
 
 class testview(JobView):
-    # Create new table in Airflow db
-    # testdag.__table__.create(settings.engine, checkfirst=True)
-
 
     datamodel = CustomSQLAInterface(testdag)
 
